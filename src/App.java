@@ -16,15 +16,27 @@ public class App {
         String query = myObj.nextLine();
 
         Connection con = DriverManager.getConnection(url, username, password);
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(query);
+        // this is for get the value from databae 
+        // Statement st = con.createStatement();
+        // ResultSet rs = st.executeQuery(query);
 
-        String userData = "";
+        // String userData = "";
 
-        while (rs.next()) {
-            userData = "name : " + rs.getString(1) + "\n age : " + rs.getString(2);
-            System.out.println(userData);
-        }
+        // while (rs.next()) {
+        //     userData = "name : " + rs.getString(1) + "\n age : " + rs.getString(2);
+        //     System.out.println(userData);
+        // }
+
+        // this is for adding the value 2 databae 
+
+        PreparedStatement st = con.prepareStatement(query);
+        // st.setString(1, "Tiger");
+        // st.setString(2, "88");
+        int count =  st.executeUpdate();
+
+        System.out.println("success! "+ count+" row affected");
+
+
 
         st.close();
         con.close();
