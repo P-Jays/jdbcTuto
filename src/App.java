@@ -40,5 +40,6 @@ public class App {
 
         st.close();
         con.close();
+        myObj.close();
     }
 }
